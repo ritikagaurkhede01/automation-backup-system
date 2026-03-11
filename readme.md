@@ -32,7 +32,7 @@ Automation reduces manual work, improves reliability, and ensures that backups h
 
 ## **Project Setup Steps:**
 
-**1. Create 2 S3 Bucket :**
+**1. Create two S3 Bucket first as source backup and second as destination backup:**
 
   - Go to AWS Management Console.
 
@@ -42,7 +42,7 @@ Automation reduces manual work, improves reliability, and ensures that backups h
 
 - Enter a unique bucket name.
 
-- Select region.
+- Select same region to both bucket.
 
 - Create the bucket.
  
@@ -121,6 +121,12 @@ def lambda_handler(event, context):
         'body': 'Backup completed successfully'
     }
 ```
+
+
+
+
+
+
 ![](./img/Screenshot%20(158).png)
 
 
@@ -141,8 +147,17 @@ Example schedule:  Run every day
 ![](./img/Screenshot%20(159).png)
 
 This will automatically run the backup process.
+ 
+ Whenever a file is uploaded to the source S3 bucket
+
+
+
 
 ![](./img/Screenshot%20(160).png)
+
+the automated backup system triggers a Lambda function that copies the file to the destination backup bucket.
+
+
 
 ![](./img/Screenshot%20(161).png)
 
